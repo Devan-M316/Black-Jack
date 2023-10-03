@@ -11,5 +11,3 @@ card_back = t.Turtle()
 wn.addshape('card_back.gif')
 
 card_back.shape('card_back.gif')
-
-t.mainloop()
