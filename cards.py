@@ -1,19 +1,10 @@
-import random as random
-import turtle as t
+import random
 
-# wn = t.Screen()
-# 540 x 360
-from player import player
-"""t.bgpic("green_felt_bg.gif")
-
-card_back = t.Turtle()
-wn.addshape('card_back.gif')
-
-card_back.shape('card_back.gif')"""
 
 class Cards:
     def __init__(self):
         # check index in each item in list for ex: for card in list for letter in card if 'K' == 10  
+        self.hand = 0
         self.cards = [
         "card_clubs_A.gif",
         "card_clubs_02.gif",
@@ -69,36 +60,43 @@ class Cards:
         "card_spades_K.gif"]
         
     def getCards(self):
-        for cards in range(len(self.cards)):
-            rand_card = self.cards.pop(random.randint(0,51))
-            for letter in range(len(rand_card)):
-                if rand_card[letter] == 'A':
-                    rand_card_val = 11
-                elif rand_card[letter] == '2':
-                    rand_card_val = 2
-                elif rand_card[letter] == '3':
-                    rand_card_val = 3
-                elif rand_card[letter] == '4':
-                    rand_card_val = 4
-                elif rand_card[letter] == '5':
-                    rand_card_val = 5
-                elif rand_card[letter] == '6':
-                    rand_card_val = 6
-                elif rand_card[letter] == '7':
-                    rand_card_val = 7
-                elif rand_card[letter] == '8':
-                    rand_card_val = 8
-                elif rand_card[letter] == '9':
-                    rand_card_val = 9
-                elif rand_card[letter] == '10':
-                    rand_card_val = 10
-                elif rand_card[letter] == 'J':
-                    rand_card_val = 10
-                elif rand_card[letter] == 'Q':
-                    rand_card_val = 10
-                elif rand_card[letter] == 'K':
-                    rand_card_val = 10
+        self.rand_card = random.choice(self.cards)
+        self.cards.remove(self.rand_card)
+        
 
-
-        return rand_card, rand_card_val
-
+        for letter in range(len(self.rand_card)):
+            if self.rand_card[letter] == 'A':
+                self.rand_card_val = 11
+            elif self.rand_card[letter] == '2':
+                self.rand_card_val = 2
+            elif self.rand_card[letter] == '3':
+                self.rand_card_val = 3 
+            elif self.rand_card[letter] == '4':
+                self.rand_card_val = 4
+            elif self.rand_card[letter] == '5':
+                self.rand_card_val = 5
+            elif self.rand_card[letter] == '6':
+                self.rand_card_val = 6
+            elif self.rand_card[letter] == '7':
+                self.rand_card_val = 7
+            elif self.rand_card[letter] == '8':
+                self.rand_card_val = 8
+            elif self.rand_card[letter] == '9':
+                self.rand_card_val = 9
+            elif self.rand_card[letter] == '1':
+                if self.rand_card[letter+1] == '0':
+                    self.rand_card_val = 10
+                else:
+                    self.rand_card_val = 1
+            elif self.rand_card[letter] == 'J':
+                self.rand_card_val = 10
+            elif self.rand_card[letter] == 'Q':
+                self.rand_card_val = 10
+            elif self.rand_card[letter] == 'K':
+                self.rand_card_val = 10
+        return self.rand_card, self.rand_card_val
+        
+    def start_cards(self):
+        for i in range(2):
+            self.hand += self.getCards()[1]
+            print(f"You currently have a {self.getCards()[0]} in your hand which is worth {self.getCards()[1]}. Your total hand is worth {self.hand}.")

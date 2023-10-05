@@ -2,19 +2,19 @@
 # 09/06/23
 # Blackjack game
 from cards import Cards
+from player import Player
 
-test1 = Cards()
+player = Player()
+cards1 = Cards()
 
-print(test1.getCards())
-
+print(cards1.start_cards())
 """
 class Game:
     def __init__(self):
         self.win = False
     
     def game(self):
-        while self.win == False:
-            
+        while self.win == False:         
 """        
             
             
