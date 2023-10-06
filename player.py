@@ -18,11 +18,11 @@ class Player:
 
 
     def setChoice(self):
-        if self.hand != 21 and self.hand < 21:
+        if self.hit.hand != 21 and self.hit.hand < 21:
             choice = input("Do you want to hit or stay (h or s)?")
             if choice.lower() == "h":#choice is to hit
                 print(f"Your card was a {self.hit.getCards()[0]}, so it was worth {self.hit.getCards()[1]}.")
-                self.hand += self.hit.getCards()[1]
+                self.hit.hand += self.hit.getCards()[1]
                 if self.hit.hand > 21:
                     print("You have busted")
                 elif self.hit.hand == 21:
@@ -43,4 +43,4 @@ class Player:
 
 
     def stay(self):
-        """
+"""
