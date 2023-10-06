@@ -5,6 +5,7 @@ class Cards:
     def __init__(self):
         # check index in each item in list for ex: for card in list for letter in card if 'K' == 10  
         self.hand = 0
+        
         self.cards = [
         "card_clubs_A.gif",
         "card_clubs_02.gif",
@@ -61,12 +62,13 @@ class Cards:
         
     def getCards(self):
         self.rand_card = random.choice(self.cards)
-        self.cards.remove(self.rand_card)
+        index = self.cards.index(self.rand_card)
+        self.cards.remove(index)
         
 
         for letter in range(len(self.rand_card)):
             if self.rand_card[letter] == 'A':
-                self.rand_card_val = 11
+                self.rand_card_val = eval(input('Would you like the ace to be a 1 or 11: '))
             elif self.rand_card[letter] == '2':
                 self.rand_card_val = 2
             elif self.rand_card[letter] == '3':
@@ -83,11 +85,8 @@ class Cards:
                 self.rand_card_val = 8
             elif self.rand_card[letter] == '9':
                 self.rand_card_val = 9
-            elif self.rand_card[letter] == '1':
-                if self.rand_card[letter+1] == '0':
-                    self.rand_card_val = 10
-                else:
-                    self.rand_card_val = 1
+            elif self.rand_card[letter] == '10':
+                self.rand_card_val = 10
             elif self.rand_card[letter] == 'J':
                 self.rand_card_val = 10
             elif self.rand_card[letter] == 'Q':
@@ -98,5 +97,5 @@ class Cards:
         
     def start_cards(self):
         for i in range(2):
-            self.hand += self.getCards()[1]
+            self.getCards()[0] += self.getCards()[1]
             print(f"You currently have a {self.getCards()[0]} in your hand which is worth {self.getCards()[1]}. Your total hand is worth {self.hand}.")
