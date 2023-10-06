@@ -43,4 +43,4 @@ class Player:
 
 
     def stay(self):
-        """
+"""
